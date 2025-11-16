@@ -34,4 +34,9 @@ class Store extends Model
     {
         return $this->belongsToMany(Beer::class, 'beer_store')->withPivot('price', 'url', 'promo_label');
     }
+
+    public function catalogItems()
+    {
+        return $this->hasMany(CatalogItem::class);
+    }
 }
