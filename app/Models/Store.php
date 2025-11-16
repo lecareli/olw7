@@ -29,4 +29,9 @@ class Store extends Model
     {
         return $this->hasOne(Address::class);
     }
+
+    public function beers()
+    {
+        return $this->belongsToMany(Beer::class, 'beer_store')->withPivot('price', 'url', 'promo_label');
+    }
 }

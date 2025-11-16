@@ -24,4 +24,9 @@ class Beer extends Model
     protected $casts = [
         'first_brewed_at' => 'date',
     ];
+
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class, 'beer_store')->withPivot('price', 'url', 'promo_label');
+    }
 }
