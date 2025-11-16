@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class BeerStore extends Pivot
 {
     protected $table = 'beer_store';
+
     protected $fillable = [
         'price',
         'url',
@@ -15,12 +17,19 @@ class BeerStore extends Pivot
         'store_id',
     ];
 
-    public function beer()
+    protected function casts(): array
+    {
+        return [
+            'price' => 'integer',
+        ];
+    }
+    
+    public function beer(): BelongsTo
     {
         return $this->belongsTo(Beer::class);
     }
 
-    public function store()
+    public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
     }
