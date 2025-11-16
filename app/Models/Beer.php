@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beer extends Model
 {
-    protected $fillable = [
+   protected $table = 'beers';
+   protected $fillable = [
         'name',
         'tagline',
         'description',
